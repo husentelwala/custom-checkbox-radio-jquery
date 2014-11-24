@@ -1,0 +1,42 @@
+<style>
+ul.form-listing li .select-box {
+    background: url("../images/select-bot-arrow.jpg") no-repeat scroll right center rgba(0, 0, 0, 0);
+    position: relative;
+}
+ul.form-listing li .input-box, ul.form-listing li .select-box {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #5198A3 #5198A3 #165B66 #145A65;
+    border-left: 3px solid #145A65;
+    border-style: solid;
+    border-width: 1px 1px 2px 3px;
+    height: 35px;
+    line-height: 32px;
+    padding: 0 20px 0 40px;
+    resize: none;
+    width: auto;
+}
+ul.form-listing li .select-box select {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 11;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('.country-select').change(function()
+	{
+		$selected_val=($(this).val());
+		$(".span-country").text($selected_val);
+	});
+	});
+
+</script>
+<div class="select-box"><span class="span-country"></span><br>
+                <select class="wpcf7-form-control wpcf7-select country-select" name="country"><option value="Please select country">Please select country</option><option value="Afghanistan">Afghanistan</option><option value="Aland Islands">Aland Islands</option><option value="Albania">Albania</option></select>  </div>
+                

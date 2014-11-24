@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Checkboxes and radio buttons customization (jQuery and Zepto) plugin</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width" name="viewport">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('.country-select').change(function()
+	{
+		$selected_val=($(this).val());
+		$(".span-country").text($selected_val);
+	});
+});
+
+</script>
+
+<style>
+ .select-box {
+    background: url("../images/select-bot-arrow.jpg") no-repeat scroll right center rgba(0, 0, 0, 0);
+    position: relative;
+}
+ .input-box,  .select-box {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #5198A3 #5198A3 #165B66 #145A65;
+    border-left: 3px solid #145A65;
+    border-style: solid;
+    border-width: 1px 1px 2px 3px;
+    height: 35px;
+    line-height: 32px;
+    padding: 0 20px 0 20px;
+    resize: none;
+    width: auto;
+}
+ .select-box select {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 11;
+}
+</style>
+</head>
+<body>
+<div style="width:300px">
+<div class="select-box">
+	<span class="span-country">Please select country</span><br>
+                <select class="wpcf7-form-control wpcf7-select country-select" name="country"><option value="Please select country">Please select country</option><option value="Afghanistan">Afghanistan</option><option value="Aland Islands">Aland Islands</option><option value="Albania">Albania</option></select>  </div>
+                </div>
+           
+  
+  <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Checkbox and Radio Button Styling</title>
+
+<style type="text/css">
+.custom-label { display: inline-block; margin-bottom: .8em;  cursor: pointer; }
+.custom-radio, .custom-check { vertical-align: middle; display: inline-block; position: relative; top: -.15em;
+    margin: 0 .4em; width: 22px; height: 22px; }
+.custom-check { background:url(images/chk-uncheck.png) no-repeat; }
+.custom-check.checked { background:url(images/chk-checked.png) no-repeat; }
+.custom-radio { background:url(images/radio-uncheck.png) no-repeat; }
+.custom-radio.checked { background:url(images/radio-checked.png) no-repeat; }
+.custom-check.focus {  background:url(images/chk-uncheck.png) no-repeat; }
+.custom-check.checked.focus { background:url(images/chk-checked.png) no-repeat; }
+.custom-radio.focus { background:url(images/radio-uncheck.png) no-repeat; }
+.custom-radio.checked.focus { background:url(images/radio-checked.png) no-repeat; }
+</style>
+<script type="text/javascript">
+;(function(){
+$.fn.customRadioCheck = function() {
+
+  return this.each(function() {
+
+    var $this = $(this);
+    var $span = $('<span/>');
+
+    $span.addClass('custom-'+ ($this.is(':checkbox') ? 'check' : 'radio'));
+    $this.is(':checked') && $span.addClass('checked'); // init
+    $span.insertAfter($this);
+
+    $this.parent('label').addClass('custom-label')
+      .attr('onclick', ''); // Fix clicking label in iOS
+    // hide by shifting left
+    $this.css({ position: 'absolute', left: '-9999px' });
+
+    // Events
+    $this.on({
+      change: function() {
+        if ($this.is(':radio')) {
+          $this.parent().siblings('label')
+            .find('.custom-radio').removeClass('checked');
+        }
+        $span.toggleClass('checked', $this.is(':checked'));
+      },
+      focus: function() { $span.addClass('focus'); },
+      blur: function() { $span.removeClass('focus'); }
+    });
+  });
+};
+}());
+
+</script>
+</head>
+<body>
+
+<a href='http://1stwebmagazine.com/jquery-checkbox-and-radio-button-styling'><img src='../img/logo.png' alt='1stWebMagazine' /></a>
+<h1>jQuery Checkbox and Radio Button Styling</h1>
+
+  <div>
+    <h3>Checkbox:</h3>
+    <label><input checked type="checkbox"/>Gorilla</label><br/>
+    <label><input type="checkbox"/>Lamb</label><br/>
+    <label><input type="checkbox"/>Tiger</label><br/>
+  </div>
+  <div>
+    <h3>Radio button:</h3>
+    <label><input type="radio" name="n"/>Green</label><br/>
+    <label><input type="radio" name="n"/>Blue</label><br/>
+    <label><input type="radio" name="n"/>Orange</label><br/>
+  </div>
+
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+	$('input[type=checkbox], input[type=radio]').customRadioCheck();
+</script>
+</body>
+</html>

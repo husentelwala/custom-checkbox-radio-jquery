@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Checkbox and Radio Button Styling</title>
+<style type="text/css">
+.custom-label { display: inline-block; margin-bottom: .8em;  cursor: pointer; }
+.custom-radio, .custom-check { vertical-align: middle; display: inline-block; position: relative; top: -.15em;
+    margin: 0 .4em; width: 22px; height: 22px; }
+.custom-check { background:url(images/chk-uncheck.png) no-repeat; }
+.custom-check.checked { background:url(images/chk-checked.png) no-repeat; }
+.custom-radio { background:url(images/radio-uncheck.png) no-repeat; }
+.custom-radio.checked { background:url(images/radio-checked.png) no-repeat; }
+.custom-check.focus {  background:url(images/chk-uncheck.png) no-repeat; }
+.custom-check.checked.focus { background:url(images/chk-checked.png) no-repeat; }
+.custom-radio.focus { background:url(images/radio-uncheck.png) no-repeat; }
+.custom-radio.checked.focus { background:url(images/radio-checked.png) no-repeat; }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <label><input checked type="checkbox"/>Gorilla</label><br/>
+    <label><input type="checkbox"/>Lamb</label><br/>
+    <label><input type="checkbox"/>Tiger</label><br/>
+
+    <label><input type="radio" name="n"/>Green</label><br/>
+    <label><input type="radio" name="n"/>Blue</label><br/>
+    <label><input type="radio" name="n"/>Orange</label><br/>
+
+
+
+
+	<script type="text/javascript">
+(function(){
+$.fn.customRadioCheck = function() {
+
+  return this.each(function() {
+
+    var $this = $(this);
+    var $span = $('<span/>');
+
+    $span.addClass('custom-'+ ($this.is(':checkbox') ? 'check' : 'radio'));
+    $this.is(':checked') && $span.addClass('checked'); // init
+    $span.insertAfter($this);
+
+    $this.parent('label').addClass('custom-label')
+      .attr('onclick', ''); // Fix clicking label in iOS
+    // hide by shifting left
+    $this.css({ position: 'absolute', left: '-9999px' });
+
+    // Events
+    $this.on({
+      change: function() {
+        if ($this.is(':radio')) {
+          $this.parent().siblings('label')
+            .find('.custom-radio').removeClass('checked');
+        }
+        $span.toggleClass('checked', $this.is(':checked'));
+      },
+      focus: function() { $span.addClass('focus'); },
+      blur: function() { $span.removeClass('focus'); }
+    });
+  });
+};
+}());
+
+</script>
+	<script type="text/javascript">
+        $('input[type=checkbox], input[type=radio]').customRadioCheck();
+    </script>
+</body>
+</html>
+	
